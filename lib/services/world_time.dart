@@ -15,6 +15,8 @@ class WorldTime{
   late String flag;
   // location url for API Endpoint
   late String url;
+ // True or false if daytime or not
+  late bool isDayTime;
 
   WorldTime({required this.location, required this.flag, required this.url});
 
@@ -42,6 +44,7 @@ class WorldTime{
       now = now.add(Duration(hours: int.parse(offset)));
 
       // set the time property
+      isDayTime = now.hour > 6 && now.hour < 20 ? true : false;
       time = DateFormat.jm().format(now);
     }
 
@@ -50,6 +53,9 @@ class WorldTime{
       time = 'Could not get data';
 
     }
+
+
+
 
   }
 
